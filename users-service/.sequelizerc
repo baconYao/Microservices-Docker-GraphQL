@@ -1,0 +1,8 @@
+const path = require('path');
+
+module.exports = {
+  // 設定 sequelize 所需的config 的路徑
+  config: path.resolve(__dirname, "./sequelize/config.js"),
+  // 設定 db migration 的路徑
+  "migrations-path": path.resolve(__dirname, "./sequelize/migrations")
+};
