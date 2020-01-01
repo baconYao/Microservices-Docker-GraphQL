@@ -23,3 +23,7 @@ $ yarn db:migration
 ```
 
 After migration, check those tables exist in DB.
+
+### 3. Browse the endpoint
+
+Type `localhost:7000/graphql` at your browser, then you will see the graphql playground.
