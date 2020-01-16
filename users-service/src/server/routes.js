@@ -55,6 +55,19 @@ const setupRoutes = app => {
       return next(err);
     }
   });
+
+  app.get("/users/:userId", async (req, res, next) => {
+    try {
+      // findByPk() //查找指定主鍵的單一活動記錄
+      const user = await User.findByPk(req.params.userId);
+
+      if(!user) return next(new Error("Invalid user ID"));
+
+      return res.json(user);
+    } catch(err) {
+      return next(err)
+    }
+  });
 };
 
 export default setupRoutes;
