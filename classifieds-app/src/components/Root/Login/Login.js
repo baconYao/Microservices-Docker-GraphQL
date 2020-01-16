@@ -12,10 +12,15 @@ const Label = styled.label`
   }
 `;
 
-const LabelText = styled.div`
+const LabelText = styled.strong`
   display: block;
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
+`;
+
+const LoginButton = styled.button`
+  display: inline-block;
+  margin-top: .5rem;
 `;
 
 const Login = () => {
@@ -32,17 +37,14 @@ const Login = () => {
   return (
     <form onSubmit={onSubmit}>
       <Label>
-        <LabelText>
-          Email
-        </LabelText>
+        <LabelText>Email</LabelText>
         <TextInput disabled={isSubmitting} name="email" type="email" ref={register} />
       </Label>
       <Label>
-        <LabelText>
-          Password
-        </LabelText>
+        <LabelText>Password</LabelText>
         <TextInput disabled={isSubmitting} name="password" type="password" ref={register} />
       </Label>
+      <LoginButton disabled={isSubmitting} type="submit">Login</LoginButton>
     </form>
   );
 }
