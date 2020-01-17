@@ -26,4 +26,14 @@ export default class UsersService {
       .json();
     return body;
   }
+
+  static async fetchUserSession({ sessionId }) {
+    const body = await got
+      .get(`${USERS_SERVICE_URI}/sessions/${sessionId}`)
+      .json()
+      .catch(err => {
+        console.log(err.response.body);
+      });
+      return body;
+  }
 }

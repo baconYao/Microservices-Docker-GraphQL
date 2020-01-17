@@ -38,6 +38,17 @@ const setupRoutes = app => {
     }
   });
   
+  app.get("/sessions/:sessionId", async (req, res, next) => {
+    try {
+      const userSession = await UserSession.findByPk(req.params.sessionId);
+
+      if(!userSession) return next(new Error("Invalid session ID"));
+      return res.json(userSession);
+    } catch(err) {
+      return next(err);
+    }
+  });
+
   app.post("/users", async (req, res, next) => {
     if(!req.body.email || !req.body.password) {
       return next(new Error("Invalid body!"));
