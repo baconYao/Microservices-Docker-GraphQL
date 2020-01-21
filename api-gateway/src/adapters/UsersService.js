@@ -27,6 +27,18 @@ export default class UsersService {
     return body;
   }
 
+  static async deleteUserSession({ sessionId }) {
+    console.log(`bbb: ${USERS_SERVICE_URI}/sessions/${sessionId}`)
+    const body = await got
+      .delete(`${USERS_SERVICE_URI}/sessions/${sessionId}`)
+      .json()
+      .catch(err => {
+        console.error(err);
+      });
+    console.log("aaa: ", body)
+    return body;
+  }
+
   static async fetchUserSession({ sessionId }) {
     const body = await got
       .get(`${USERS_SERVICE_URI}/sessions/${sessionId}`)

@@ -38,6 +38,23 @@ const setupRoutes = app => {
     }
   });
   
+  app.delete("/sessions/:sessionId", async (req, res, next) => {
+    try {
+      console.log("delete session: ", req.params.sessionId);
+      const userSession = await UserSession.findByPk(req.params.sessionId);
+
+      if(!userSession) {
+        return next(new Error("Invalid session ID"));
+      }
+      console.log("delete session1.5");
+      await userSession.destroy();
+      console.log("delete session22");
+      return res.end();
+    } catch(err) {
+      return next(err);
+    }
+  });
+
   app.get("/sessions/:sessionId", async (req, res, next) => {
     try {
       const userSession = await UserSession.findByPk(req.params.sessionId);
